@@ -12,15 +12,15 @@ print('New York Times -- First 10 Story Headings\n')
 res = rq.get('https://nytimes.com')
 soup = bs(res.text,'html.parser')
 headlines = soup.find_all(class_='story-heading')
-ct,i=0,0
-while ct<10:
-    if headlines[i].span:
-        i += 1
-        continue
-    else:
+
+i=0
+while i<10:
+    if headlines[i].a:
         print(headlines[i].a.text)
+        i += 1       
+    else:
+        print(headlines[i])
         i+=1
-        ct+=1
 
 
 #### Problem 2 ####
